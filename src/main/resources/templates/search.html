@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Form validation Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<h1 th:text="${emplist}" align=center ></h1>
+	<div class="container" align="center">
+		<h2>Employee Details</h2>
+		<form action="/get" th:action="@{/get}"} >
+			<input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+		  <input type="submit" value="Search" />
+		</form>
+	</div>
+
+</body>
+</html>
