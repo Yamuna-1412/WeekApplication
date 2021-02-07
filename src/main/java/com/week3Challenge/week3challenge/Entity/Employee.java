@@ -1,9 +1,11 @@
 package com.week3Challenge.week3challenge.Entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -12,20 +14,27 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
+@Table(name="EMPLOYEE")
 public class Employee {
-
+	 @Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @Column
 	private int id;
+	 @Column
 	@NotNull
 	@Size(min = 2, max = 10, message = "length shoud be in between 2 to 10")
 	private String forename;
-	
+	@Column
 	@NotEmpty(message = " surnamne is not empty")
 	private String surname;
+	@Column
 	@Min(value=18, message="must be equal or greater than 25")  
     @Max(value=45, message="must be equal or less than 45")  
 	private int age;
+	@Column
 	@NotEmpty(message = "Company field should not be empty")
 	private String company;
+	@Column
 	@NotEmpty(message = "Postcode field should not be empty")
 	private String postcode;
 	 @Id
@@ -79,6 +88,7 @@ public class Employee {
 		this.company = company;
 		this.postcode = postcode;
 	}
+
 	
 
 }

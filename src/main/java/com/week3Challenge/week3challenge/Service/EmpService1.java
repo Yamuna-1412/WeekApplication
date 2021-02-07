@@ -11,10 +11,14 @@ public interface EmpService1 {
 
 	List<Employee> listAll();
 
-	void addEmployee(Employee emp);
+	Employee addEmployee(Employee emp);
 
-	Employee findId(Integer id);
+	
+	  Employee findId(Integer id );
 
+	Optional<Employee> updateEmployee(Integer id, Employee e);
+
+	Optional<Employee> deleteEmployee(Integer id);
 
 
 }

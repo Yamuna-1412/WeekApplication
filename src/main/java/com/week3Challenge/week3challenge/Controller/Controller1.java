@@ -2,12 +2,8 @@ package com.week3Challenge.week3challenge.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.validation.Errors;
 
 import com.week3Challenge.ExceptionHandle.RecordNotFoundException;
@@ -15,12 +11,12 @@ import com.week3Challenge.week3challenge.Entity.Employee;
 import com.week3Challenge.week3challenge.Service.EmpService1;
 
 import java.util.List;
-import java.util.Optional;
+
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,7 +47,9 @@ private	EmpService1 empservice;
 		return "search";
 		
 	}
-	@RequestMapping(value ="/get", method = RequestMethod.GET)
+
+	
+	@GetMapping("/get")
 	  public String  getEmployee( @Param("keyword") String keyword,Model m)throws RecordNotFoundException
 	  { 
 	  int i=Integer.parseInt(keyword);  
@@ -80,13 +78,14 @@ private	EmpService1 empservice;
 	     
 	    return "form";
 	}
-	@RequestMapping(value = "/ADD", method = RequestMethod.POST)
+
+	@PostMapping("/ADD")
 	public String saveProduct(@Valid @ModelAttribute("emp") Employee emp,Errors errors) {
 		if (errors.hasErrors()) {
 			return "form";
 		}
 		else {
-	    empservice.addEmployee(emp);
+	 empservice.addEmployee(emp);
 	     
 	    return "success";}
 	}

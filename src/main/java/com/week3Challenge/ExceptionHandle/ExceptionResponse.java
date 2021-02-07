@@ -1,13 +1,13 @@
 package com.week3Challenge.ExceptionHandle;
 
-import java.util.List;
+
 
 public class ExceptionResponse {
 	private String ErrorMessage;
 	private String details;
 	
 	public ExceptionResponse(String message, String description) {
-		// TODO Auto-generated constructor stub
+
 	}
 	public String getErrorMessage() {
 		return ErrorMessage;

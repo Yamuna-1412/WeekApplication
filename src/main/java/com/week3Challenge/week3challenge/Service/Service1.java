@@ -19,21 +19,59 @@ private EmployeeRepository emrp;
 
 @Override
 public List<Employee> listAll() {
-	// TODO Auto-generated method stub
+
 	return emrp.findAll();
 }
 
 @Override
-public void addEmployee(Employee emp) {
-	// TODO Auto-generated method stub
+public Employee addEmployee(Employee emp) {
 	emrp.save(emp);
+	return emp;
 }
 
 @Override
 public  Employee findId(Integer id ) {
-	// TODO Auto-generated method stub
-  Employee e=emrp.findById(id).orElse(null);
-return e;
+
+  
+		  
+return emrp.findById(id).orElse(null);
+}
+
+@Override
+public Optional<Employee> updateEmployee(Integer id, Employee e) {
+
+	Optional<Employee> es1=emrp.findById(id);
+	if(es1.isPresent())
+	{ 
+		Employee es=es1.get();
+		es.setId(e.getId());
+		es.setForename(e.getForename());
+		es.setSurname(e.getSurname());
+		es.setAge(e.getAge());
+		e.setCompany(e.getCompany());
+		e.setPostcode(e.getPostcode());
+		emrp.save(es);
+		
+		
+	}
+	return es1;
+	
+	
+}
+
+@Override
+public Optional<Employee> deleteEmployee(Integer id) throws NullPointerException {
+	
+	Optional<Employee> emps=emrp.findById(id);
+	
+	if(emps.isPresent())
+	{
+		Employee e=emps.get();
+		emrp.delete(e);
+	}
+	return emps;
+	
+	
 }
 
 
